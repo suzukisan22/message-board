@@ -2,14 +2,22 @@ class MessagesController < ApplicationController
   def index
     # Messageを全て取得する。
     @messages = Message.all
+    @message = Message.new
   end
   
   ##ここから追記
-  def create
+  def create 
     @message = Message.new(message_params)
-    @message.save
-    redirect_to root_path , notice: 'メッセージを保存しました'
+    if @message.save
+      redirect_to root_path , notice: 'メッセージを保存しました。'
+    else
+      #メッセージが保存できなかった時
+      @messages = Message.all
+      flash.now[:alert] = "メッセージの保存に失敗しました。"
+      render 'index'
+    end
   end
+
   
   #ここから下はprivateメソッドとなる
   
@@ -21,8 +29,9 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:name, :body)
   end
   
-  ##ここまで
   
+  
+  ##ここまで
   
   
 end
