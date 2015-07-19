@@ -6,4 +6,5 @@ class Message < ActiveRecord::Base
     
     validates :age , numericality: true # 数値か小数点のみ有効
     validates :age , numericality: { only_integer: true } # 数値のみ有効
+    validates :age , numericality: { :greater_than => 0 }
 end
