@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
   private
   def message_params
     #params[:message]のパラメータでname , bodyのみを許可する。
-    #返り値は ex:) {name: "入力されたname" , body: "入力されたbody" }
+    #返り値は ex:) {name: "入力されたname" , body: "入力されたbody" , age: "入力されたage"}
     params.require(:message).permit(:name, :body)
   end
   
