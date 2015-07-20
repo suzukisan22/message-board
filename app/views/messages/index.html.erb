@@ -1,19 +1,4 @@
 
-<style>
-    .input_title{
-        color: #fff;
-        border-radius: 5px;
-    }
-    
-    .mt{
-        margin-top: 20px;
-    }
-    
-
-    
-
-    
-</style>
 
 
 <div class="panel panel-default">
@@ -25,6 +10,7 @@
 <% @messages.each do |message| %>
 <span class="label label-info"><%= message.name %></span>
 <%= message.body %>
+<%= message.age %>
 (<%= link_to "edit" , edit_message_path(message) %>
 <%= link_to "destroy" , message , method: :delete, data: { confirm: '削除してもよろしいですか？' } %>
 )
